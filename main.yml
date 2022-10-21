@@ -232,9 +232,9 @@ Resources:
             . /home/ec2-user/.bashrc
 
             # Install NVM, NPM, Node.JS
-            nvm alias default v12.7.0
-            nvm install v12.7.0
-            nvm use v12.7.0
+            nvm alias default v16.18.0
+            nvm install v16.18.0
+            nvm use v16.18.0
 
             # Download latest code, unzip it into /home/ec2-user/app
             #wget https://github.com/leonazava/aws-bootstrap/archive/master.zip 
