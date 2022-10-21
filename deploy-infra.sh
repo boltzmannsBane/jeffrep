@@ -1,18 +1,17 @@
+#!/bin/bash
 
-source aws_credentials.sh
+STACK_NAME=jeffrep
+REGION=us-east-1
+CLI_PROFILE=jeffrep
+EC2_INSTANCE_TYPE=t2.micro
 
-STACK_NAME=awsbootstrap
-REGION=us-east-1 
-CLI_PROFILE=awsbootstrap
-EC2_INSTANCE_TYPE=t2.micro 
-
-GH_ACCESS_TOKEN=$(cat ~/.github/aws-bootstrap-access-token)
-GH_OWNER=$(cat ~/.github/aws-bootstrap-owner)
-GH_REPO=$(cat ~/.github/aws-bootstrap-repo)
+GH_ACCESS_TOKEN=$(cat ~/.github/jeffrep-access-token)
+GH_OWNER=$(cat ~/.github/jeffrep-owner)
+GH_REPO=$(cat ~/.github/jeffrep-repo)
 GH_BRANCH=master
 
-AWS_ACCOUNT_ID=`aws sts get-caller-identity --profile awsbootstrap --query "Account" --output text`
-CODEPIPELINE_BUCKET="$STACK_NAME-$REGION-codepipeline-$AWS_ACCOUNT_ID" 
+AWS_ACCOUNT_ID=`aws sts get-caller-identity --profile jeffpep --query "Account" --output text`
+CODEPIPELINE_BUCKET="$STACK_NAME-$REGION-codepipeline-$AWS_ACCOUNT_ID"
 
 echo $CODEPIPELINE_BUCKET
 
@@ -46,8 +45,8 @@ aws cloudformation deploy \
     # If the deploy succeeded, show the DNS name of the created instance
 if [ $? -eq 0 ]; then
   aws cloudformation list-exports \
-    --profile awsbootstrap \
-    --query "Exports[?Name=='InstanceEndpoint'].Value" 
+    --profile jeffrep \
+    --query "Exports[?Name=='InstanceEndpoint'].Value"
 fi
 
 
