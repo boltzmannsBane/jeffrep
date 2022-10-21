@@ -10,7 +10,8 @@ GH_OWNER=$(cat ~/.github/jeffrep-owner)
 GH_REPO=$(cat ~/.github/jeffrep-repo)
 GH_BRANCH=master
 
-AWS_ACCOUNT_ID=`aws sts get-caller-identity --profile jeffpep --query "Account" --output text`
+AWS_ACCOUNT_ID=`aws sts get-caller-identity --profile jeffrep \
+  --query "Account" --output text`
 CODEPIPELINE_BUCKET="$STACK_NAME-$REGION-codepipeline-$AWS_ACCOUNT_ID"
 
 echo $CODEPIPELINE_BUCKET
