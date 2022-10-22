@@ -46,8 +46,8 @@ aws cloudformation deploy \
     # If the deploy succeeded, show the DNS name of the created instance
 if [ $? -eq 0 ]; then
   aws cloudformation list-exports \
-    --profile jeffrep \
-    --query "Exports[?Name=='InstanceEndpoint'].Value"
+    --profile default \
+    --query "Exports[?starts_with(Name,'InstanceEndpoint')].Value"
 fi
 
 
